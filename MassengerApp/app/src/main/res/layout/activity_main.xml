@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/appbar_id">
+    <androidx.appcompat.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:id="@+id/toolbar_id"
+        app:menu="@menu/menuitems"
+        android:background="@drawable/bgcolor"
+        >
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/white"
+            android:src="@drawable/profileimg"
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/chats"
+            android:id="@+id/toolbarText_id"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_marginStart="40dp"/>
+
+    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginHorizontal="15dp"
+      android:layout_marginBottom="20dp"
+      android:layout_centerInParent="true"
+
+      android:layout_alignParentBottom="true"
+        android:elevation="8dp"
+        app:cardUseCompatPadding="true"
+      app:cardCornerRadius="30dp"
+      >
+      <com.google.android.material.tabs.TabLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:background="@drawable/bgcolor"
+          app:tabIconTint="@color/white"
+          app:tabIndicatorColor="@color/textcolor"
+          app:tabIndicatorFullWidth="true"
+          app:tabIndicatorGravity="center"
+          app:tabIndicator="@drawable/tabshape"
+          app:tabIndicatorHeight="50dp"
+          app:tabSelectedTextColor="@color/black"
+          android:padding="2dp"
+          android:id="@+id/tablayout_id"
+          >
+          <com.google.android.material.tabs.TabItem
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:elevation="20dp"
+              android:id="@+id/chats_id"
+              android:icon="@drawable/messageicon"
+              />
+
+
+          <com.google.android.material.tabs.TabItem
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/group_id"
+              android:elevation="20dp"
+              android:icon="@drawable/groupicon"
+              />
+
+          <com.google.android.material.tabs.TabItem
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/camera_id"
+              android:elevation="20dp"
+              android:icon="@drawable/cameraicon"
+              />
+
+          <com.google.android.material.tabs.TabItem
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/story_id"
+              android:elevation="20dp"
+              android:icon="@drawable/sotryicon"
+              />
+      </com.google.android.material.tabs.TabLayout>
+
+  </androidx.cardview.widget.CardView>
+
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:layout_below="@+id/appbar_id"
+        android:id="@+id/viewpager_id"
+
+        />
+
+</RelativeLayout>

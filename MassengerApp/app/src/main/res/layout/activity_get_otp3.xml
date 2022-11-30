@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/bgcolor"
+    tools:context=".GetOTP_Activity3">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:id="@+id/image_id"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/otpimage"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/t1_id"
+        android:text="Please enter your mobile number"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:layout_below="@+id/image_id"
+        />
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/t2_id"
+        android:textColor="@color/white"
+        android:text="To Verify your Account"
+        android:textSize="16sp"
+        android:layout_below="@+id/t1_id"
+        />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="45dp"
+        app:cardUseCompatPadding="true"
+        android:id="@+id/linearL_id"
+        android:layout_below="@id/t2_id"
+        app:cardElevation="10dp"
+        app:cardCornerRadius="20dp"
+        >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="30dp"
+        android:orientation="vertical"
+        >
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/mobilenumber_id"
+            android:inputType="number"
+            android:hint="+91 Mobile Number"
+            android:paddingHorizontal="10dp"
+            android:textSize="17sp"
+            android:textColor="#E14E4A4A"
+            android:paddingVertical="15dp"
+            android:background="@drawable/edittextshape"
+
+            />
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:elevation="80dp"
+            android:paddingVertical="10dp"
+            android:id="@+id/getotp_btn_id"
+            android:layout_marginTop="18dp"
+            android:text="Get OTP"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            app:backgroundTint="@color/textcolor"
+            android:background="@drawable/edittextshape"
+            />
+
+    </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/loginwithgmail_text_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearL_id"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="10dp"
+        android:text="or login with Gmail"
+        android:textColor="@color/white"
+        android:textSize="17sp" />
+
+</RelativeLayout>
