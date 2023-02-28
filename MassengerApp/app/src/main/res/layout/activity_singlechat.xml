@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activitys.singlechat_Activity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingVertical="5dp"
+            app:menu="@menu/singlechatmenu">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/back_id"
+                    android:layout_marginRight="5dp"
+                    android:src="@drawable/backarrow"/>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/p_img_id"
+                android:elevation="10dp"
+                android:src="@drawable/profileimg"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="2dp" />
+
+            <TextView
+                android:id="@+id/Username_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="@string/chats"
+                android:textColor="#00EAB8"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+            </LinearLayout>
+
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/userchats_recyclerID"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_id"
+        android:layout_below="@+id/appbar_id"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bgcolor"
+        />
+
+    <RelativeLayout
+        android:id="@+id/bottom_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#00f6aa"
+        android:padding="4dp">
+
+        <EditText
+            android:id="@+id/typemessage_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="3dp"
+            android:layout_toStartOf="@id/sendmsg_btn_id"
+            android:background="@drawable/sendmsg_edittext"
+            android:drawableStart="@drawable/imoji"
+            android:drawableEnd="@drawable/file_icon"
+            android:drawablePadding="10dp"
+            android:hint="Type a Message....."
+            android:padding="12dp"
+            android:textSize="16sp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/sendmsg_btn_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="@color/white"
+            android:src="@drawable/send_msgicon"
+            app:fabCustomSize="52dp"
+            tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

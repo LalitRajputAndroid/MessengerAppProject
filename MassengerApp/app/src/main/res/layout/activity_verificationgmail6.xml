@@ -1,59 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:layout_margin="20dp"
-    tools:context=".verificationgmail_Activity6">
+    android:orientation="vertical"
+    tools:context=".Activitys.verificationgmail_Activity6">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="200dp"
-        android:src="@drawable/otplayoutimg"
-        />
+        android:src="@drawable/otplayoutimg" />
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="OTP Verification"
-        android:gravity="center"
-        android:textSize="25sp"
-        android:textColor="@color/black"
-        android:textStyle="bold"
         android:layout_marginVertical="35dp"
-        />
+        android:gravity="center"
+        android:text="OTP Verification"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Please type 4 -digit code"
         android:gravity="center"
-        android:textStyle="bold"
+        android:text="Please type 4 -digit code"
         android:textSize="18sp"
-        />
+        android:textStyle="bold" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        >
+        android:gravity="center">
+
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="sent to "
-            android:gravity="center"
-            android:textStyle="bold"
             android:textSize="18sp"
-            />
+            android:textStyle="bold" />
+
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/verifiNum_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/verifiNum_id"
-            android:text="Gmail Account"
             android:gravity="center"
-            android:textStyle="bold"
+            android:text="Gmail Account"
             android:textSize="18sp"
-            />
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -61,35 +59,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
-        app:cardElevation="8dp"
-        app:cardUseCompatPadding="true"
         android:backgroundTint="@color/white"
-        app:cardCornerRadius="20dp">
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:paddingVertical="25dp"
             android:orientation="vertical"
-            >
+            android:paddingVertical="25dp">
+
             <EditText
+                android:id="@+id/emailotp_edittext_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="Enter OTP"
-                />
+                android:layout_gravity="center"
+                android:hint="Enter OTP" />
+
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/Gmail_nextbtn_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Next"
-                android:id="@+id/Gmail_nextbtn_id"
-                app:elevation="20dp"
-                android:paddingHorizontal="50dp"
                 android:layout_marginTop="25dp"
-                android:textStyle="bold"
-                android:textSize="18sp"
                 android:background="@drawable/buttonshape"
-                />
+                android:paddingHorizontal="50dp"
+                android:text="Next"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:elevation="20dp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -98,25 +97,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp">
+
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Didn't received OTP ? "
-            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="14sp"
-            />
+            android:textStyle="bold" />
+
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/Gmail_resendbtn_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Resend"
-            android:id="@+id/Gmail_resendbtn_id"
             android:textColor="#0aaee9"
             android:textSize="16sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

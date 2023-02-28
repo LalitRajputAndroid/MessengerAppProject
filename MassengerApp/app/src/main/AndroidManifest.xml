@@ -2,60 +2,72 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/messengericon"
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true"
+        android:icon="@mipmap/m_logo"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/messengericon"
+        android:roundIcon="@mipmap/m_logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.MessengerApp"
         tools:targetApi="31">
         <activity
-            android:name=".setprofile_Activity7"
+            android:name=".Activitys.singlechat_Activity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".verificationgmail_Activity6"
+            android:name=".Activitys.setprofile_Activity7"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Gmail_loginActivity5"
+            android:name=".Activitys.verificationgmail_Activity6"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".otp_verification_Activity4"
+            android:name=".Activitys.Gmail_loginActivity5"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".GetOTP_Activity3"
+            android:name=".Activitys.otp_verification_Activity4"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Activitys.GetOTP_Activity3"
+            android:exported="false"
+            android:windowSoftInputMode="stateVisible">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".Activitys.getstart_Activity2"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".getstart_Activity2"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".SplashScreen"
+            android:name=".Activitys.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,7 +80,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Activitys.MainActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"

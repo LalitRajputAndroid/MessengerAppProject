@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/voicecall_id"
+        android:icon="@drawable/voice_call"
+        android:iconTintMode="add"
+        android:title="voice call"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/videocall_id"
+        android:icon="@drawable/video_call"
+        android:iconTintMode="add"
+        android:title="videocall"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/chatsetting_id"
+        android:title="setting" />
+
+</menu>

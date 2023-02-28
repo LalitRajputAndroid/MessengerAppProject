@@ -1,72 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="30dp"
-    tools:context=".getstart_Activity2">
+    tools:context=".Activitys.getstart_Activity2">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        tools:ignore="UselessParent">
+
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text1_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Welcome to,"
             android:textColor="@color/black"
-            android:textStyle="bold"
             android:textSize="28sp"
-            android:id="@+id/text1_id"
-            />
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text2_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Messenger"
-            android:id="@+id/text2_id"
             android:layout_below="@+id/text1_id"
-            android:textColor="@color/textcolor"
-            android:textStyle="bold"
+            android:text="Messenger"
+            android:textColor="@color/teal_200"
             android:textSize="48sp"
-            />
+            android:textStyle="bold" />
 
         <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/animition"
             android:layout_width="wrap_content"
             android:layout_height="300dp"
-            android:id="@+id/animition"
             android:layout_below="@+id/text2_id"
-            app:lottie_rawRes="@raw/animation"
+            app:lottie_autoPlay="true"
             app:lottie_loop="false"
 
-            app:lottie_autoPlay="true"
-            />
+            app:lottie_rawRes="@raw/animation" />
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/getstart_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Let's Get Started"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="28sp"
             android:layout_above="@+id/startbtn_id"
             android:layout_marginBottom="18dp"
-            android:id="@+id/getstart_id"
-            />
+            android:gravity="center"
+            android:text="Let's Get Started"
+            android:textColor="@color/black"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/startbtn_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerInParent="true"
             android:layout_marginBottom="25dp"
             android:background="@drawable/buttonshape"
-            android:layout_centerInParent="true"
-            android:layout_alignParentBottom="true"
-            android:id="@+id/startbtn_id"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:text="Start"
-           />
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 </LinearLayout>

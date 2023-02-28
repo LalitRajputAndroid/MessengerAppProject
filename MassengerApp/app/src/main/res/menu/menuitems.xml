@@ -1,18 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="search"
+    <item
+        android:id="@+id/camera_id"
+        android:icon="@drawable/camera"
+        app:showAsAction="always"
+        android:title="camera"
+        />
+
+    <item
         android:id="@+id/searchmenu_id"
         android:icon="@drawable/search"
-        app:showAsAction="always"
-        />
-    <item android:title="Favorite Chats"
-        android:id="@+id/Fev_msg"/>
+        android:title="search"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/Fev_msg"
+        android:icon="@drawable/favorite_chats"
+        android:title="Favorite Chats" />
 
-    <item android:title="setting"
-          android:id="@+id/setting_id"
-        />
+    <item
+        android:id="@+id/shareapp_id"
+        android:icon="@drawable/share"
+        android:title="Share" />
+
+    <item android:id="@+id/signout_id"
+        android:title="Sign out"/>
+
+    <item
+        android:id="@+id/setting_id"
+        android:icon="@drawable/settings"
+        android:title="setting" />
 
 </menu>

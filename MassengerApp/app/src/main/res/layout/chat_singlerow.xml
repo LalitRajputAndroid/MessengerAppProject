@@ -1,53 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/singlerow_id"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginTop="5dp"
     android:layout_marginHorizontal="8dp"
+    android:layout_marginTop="5dp"
     android:padding="6dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/chat_img_id"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:src="@drawable/img1"
-        app:civ_border_width="2dp"
-        android:id="@+id/chat_img_id"
-        />
+        app:civ_border_width="2dp" />
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="15dp"
         android:layout_toRightOf="@+id/chat_img_id"
-        android:orientation="vertical"
-        >
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/u_name_id"
-        android:textStyle="bold"
-        android:text="Lalit"
-        android:textSize="18sp"/>
+        android:orientation="vertical">
 
         <TextView
+            android:id="@+id/u_name_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/recentmsg_id"
-            android:textSize="15sp"
+            android:text="Lalit"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lastmsg_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="hii im..."
-            />
+            android:textSize="15sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:orientation="vertical">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/chattime_id"
-        android:text="10.30 PM"
-        />
+
+        <TextView
+            android:id="@+id/lastmsg_time_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10.30 PM" />
 
         <TextView
             android:id="@+id/msgN_id"
