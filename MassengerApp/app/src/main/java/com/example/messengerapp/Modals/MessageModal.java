@@ -2,8 +2,16 @@ package com.example.messengerapp.Modals;
 
 public class MessageModal {
     String message;
-    String senderID,messageID;
+    String senderID,messageID,imgurl;
     String msgtime;
+
+    public String getImgurl() {
+        return imgurl;
+    }
+
+    public void setImgurl(String imgurl) {
+        this.imgurl = imgurl;
+    }
 
     public MessageModal() {
     }

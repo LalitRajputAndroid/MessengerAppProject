@@ -74,20 +74,36 @@
         android:background="#00f6aa"
         android:padding="4dp">
 
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            app:cardCornerRadius="25dp"
+            android:layout_toStartOf="@id/sendmsg_btn_id"
+            >
+
         <EditText
             android:id="@+id/typemessage_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="3dp"
-            android:layout_toStartOf="@id/sendmsg_btn_id"
             android:background="@drawable/sendmsg_edittext"
             android:drawableStart="@drawable/imoji"
-            android:drawableEnd="@drawable/file_icon"
             android:drawablePadding="10dp"
             android:hint="Type a Message....."
             android:padding="12dp"
             android:textSize="16sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/openmediaIcon_id"
+                android:src="@drawable/file_icon"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                />
+
+        </androidx.cardview.widget.CardView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/sendmsg_btn_id"

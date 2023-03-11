@@ -77,10 +77,10 @@ public class chatsFragment1 extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 chatlist.clear();
                 for (DataSnapshot dataSnapshot :snapshot.getChildren()){
-                    String ui=dataSnapshot.getKey();
+                    User user = dataSnapshot.getValue(User.class);
 
-                    if(!ui.equals(FirebaseAuth.getInstance().getUid())) {
-                        User user = dataSnapshot.getValue(User.class);
+                    if(!user.getUserID().equals(FirebaseAuth.getInstance().getUid())) {
+
                         chatlist.add(user);
                     }
                 }

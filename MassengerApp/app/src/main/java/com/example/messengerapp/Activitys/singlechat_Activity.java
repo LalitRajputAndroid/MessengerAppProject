@@ -1,7 +1,9 @@
 package com.example.messengerapp.Activitys;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,7 +22,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.messengerapp.MessageAdapter;
 import com.example.messengerapp.Modals.MessageModal;
 import com.example.messengerapp.R;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -27,6 +32,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
@@ -41,7 +49,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class singlechat_Activity extends AppCompatActivity {
 
     TextView profile_name;
-    ImageView backarrow;
+    ImageView backarrow, fileopenIcon;
     CircleImageView profile_image;
     EditText typemsg;
     FloatingActionButton sendmsgBtn;
@@ -49,6 +57,13 @@ public class singlechat_Activity extends AppCompatActivity {
     Toolbar toolbar;
     DatabaseReference database;
     FirebaseAuth auth;
+    FirebaseStorage storage;
+    ProgressDialog dialog;
+
+    String sender_id;
+    String reciver_id;
+    String reciverRoom;
+    String senderRoom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,9 +75,13 @@ public class singlechat_Activity extends AppCompatActivity {
         backarrow = findViewById(R.id.back_id);
         profile_image = findViewById(R.id.p_img_id);
         recyclerView = findViewById(R.id.userchats_recyclerID);
+        fileopenIcon = findViewById(R.id.openmediaIcon_id);
 
         sendmsgBtn = findViewById(R.id.sendmsg_btn_id);
         typemsg = findViewById(R.id.typemessage_id);
+        dialog = new ProgressDialog(this);
+        dialog.setTitle("Sending Image...");
+        dialog.setCancelable(false);
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setTitle("");
@@ -70,9 +89,10 @@ public class singlechat_Activity extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReference();
         database.keepSynced(true);
         auth = FirebaseAuth.getInstance();
+        storage = FirebaseStorage.getInstance();
 
-        final String sender_id = auth.getUid();
-        String reciver_id = getIntent().getStringExtra("uid");
+        sender_id = auth.getUid();
+        reciver_id = getIntent().getStringExtra("uid");
 
         String UN = getIntent().getStringExtra("name");
         String pimg = getIntent().getStringExtra("profileimage");
@@ -99,8 +119,8 @@ public class singlechat_Activity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
-        final String senderRoom = sender_id + reciver_id;
-        final String reciverRoom = reciver_id + sender_id;
+        reciverRoom = sender_id + reciver_id;
+        senderRoom = reciver_id + sender_id;
 
 
         database.child("UserChats")
@@ -141,9 +161,9 @@ public class singlechat_Activity extends AppCompatActivity {
 
                 String key = database.push().getKey();
 
-                HashMap<String,Object> hashMap = new HashMap<>();
-                hashMap.put("lastmsg",modal.getMessage());
-                hashMap.put("lastmsgtime",time);
+                HashMap<String, Object> hashMap = new HashMap<>();
+                hashMap.put("lastmsg", modal.getMessage());
+                hashMap.put("lastmsgtime", time);
 
                 database.child("UserChats").child(senderRoom).updateChildren(hashMap);
                 database.child("UserChats").child(reciverRoom).updateChildren(hashMap);
@@ -173,7 +193,93 @@ public class singlechat_Activity extends AppCompatActivity {
             }
         });
 
+//        fileopenIcon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent();
+//                intent.setAction(intent.ACTION_GET_CONTENT);
+//                intent.setType("image/*");
+//                startActivityForResult(intent, 2);
+//            }
+//        });
+
     }
+
+//    @Override
+//    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+//
+//        if (resultCode == 2) {
+//            if (data != null) {
+//                if (data.getData() != null) {
+//
+//                    Uri selectIMG = data.getData();
+//                    Calendar calendar = Calendar.getInstance();
+//                    StorageReference reference = storage.getReference().child("Chats").child(calendar.getTimeInMillis() + "");
+//                    dialog.show();
+//                    reference.putFile(selectIMG).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+//                            dialog.dismiss();
+//                            if (task.isSuccessful()) {
+//
+//                                reference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                    @Override
+//                                    public void onSuccess(Uri uri) {
+//
+//                                        String selectimguri = uri.toString();
+//
+//                                        String message = typemsg.getText().toString();
+//                                        DateFormat format = new SimpleDateFormat("h:mm a");
+//                                        String time = format.format(Calendar.getInstance().getTime());
+//
+//                                        final MessageModal modal = new MessageModal(message, sender_id, time);
+//                                        modal.setImgurl(selectimguri);
+//                                        typemsg.setText("");
+//
+//                                        String key = database.push().getKey();
+//
+//                                        HashMap<String, Object> hashMap = new HashMap<>();
+//                                        hashMap.put("lastmsg", modal.getMessage());
+//                                        hashMap.put("lastmsgtime", time);
+//
+//                                        database.child("UserChats").child(senderRoom).updateChildren(hashMap);
+//                                        database.child("UserChats").child(reciverRoom).updateChildren(hashMap);
+//
+//
+//                                        database.child("UserChats")
+//                                                .child(senderRoom)
+//                                                .child("Messages")
+//                                                .child(key)
+//                                                .setValue(modal)
+//                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                                    @Override
+//                                                    public void onSuccess(Void unused) {
+//                                                        database.child("UserChats")
+//                                                                .child(reciverRoom)
+//                                                                .child("Messages")
+//                                                                .child(key)
+//                                                                .setValue(modal)
+//                                                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                                                                    @Override
+//                                                                    public void onSuccess(Void unused) {
+//
+//                                                                    }
+//                                                                });
+//                                                    }
+//                                                });
+//
+//                                    }
+//                                });
+//                            }
+//                        }
+//                    });
+//                }
+//            }
+//        }
+//    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
