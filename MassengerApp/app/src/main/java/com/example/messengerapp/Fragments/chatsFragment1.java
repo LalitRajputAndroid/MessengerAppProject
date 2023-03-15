@@ -94,4 +94,18 @@ public class chatsFragment1 extends Fragment {
 
         return view;
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        String currantUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.getReference().child("Presence").child(currantUID).setValue("Online");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        String currantUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        database.getReference().child("Presence").child(currantUID).setValue("offline");
+    }
 }

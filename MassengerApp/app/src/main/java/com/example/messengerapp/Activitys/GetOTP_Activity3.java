@@ -21,8 +21,6 @@ public class GetOTP_Activity3 extends AppCompatActivity {
     CountryCodePicker ccp;
     MaterialButton getotp_btn;
     MaterialTextView okbtm, editnumberbtn, setnumbertext;
-    TextView loginwithgmail_text;
-
     String M_number;
 
     @Override
@@ -35,15 +33,8 @@ public class GetOTP_Activity3 extends AppCompatActivity {
         ccp.registerCarrierNumberEditText(mobilenumber);
 
         getotp_btn = findViewById(R.id.getotp_btn_id);
-        loginwithgmail_text = findViewById(R.id.loginwithgmail_text_id);
 
         mobilenumber.requestFocus();
-        loginwithgmail_text.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(GetOTP_Activity3.this, Gmail_loginActivity5.class));
-            }
-        });
         getotp_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

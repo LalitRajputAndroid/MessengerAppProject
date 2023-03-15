@@ -56,9 +56,11 @@ public class MessageModal {
 
     @Override
     public String toString() {
-        return "ChatModal{" +
+        return "MessageModal{" +
                 "message='" + message + '\'' +
                 ", senderID='" + senderID + '\'' +
+                ", messageID='" + messageID + '\'' +
+                ", imgurl='" + imgurl + '\'' +
                 ", msgtime='" + msgtime + '\'' +
                 '}';
     }

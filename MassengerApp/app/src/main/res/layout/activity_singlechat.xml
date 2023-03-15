@@ -42,15 +42,33 @@
                 app:civ_border_color="@color/white"
                 app:civ_border_width="2dp" />
 
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="20dp"
+                    >
+
             <TextView
                 android:id="@+id/Username_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
                 android:text="@string/chats"
                 android:textColor="#00EAB8"
                 android:textSize="15sp"
                 android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/uservisiblity_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    android:text="Online"
+                    android:textColor="#1E201F"
+                    android:textSize="10sp"
+               />
+                </LinearLayout>
+
             </LinearLayout>
 
         </androidx.appcompat.widget.Toolbar>

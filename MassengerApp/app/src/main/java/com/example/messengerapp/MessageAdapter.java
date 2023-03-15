@@ -2,7 +2,6 @@ package com.example.messengerapp;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -11,10 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.messengerapp.Modals.MessageModal;
-import com.github.pgreze.reactions.ReactionPopup;
-import com.github.pgreze.reactions.ReactionsConfig;
-import com.github.pgreze.reactions.ReactionsConfigBuilder;
 import com.google.firebase.auth.FirebaseAuth;
 import com.squareup.picasso.Picasso;
 
@@ -67,64 +64,63 @@ public class MessageAdapter extends RecyclerView.Adapter {
 
         MessageModal modal = chatModals.get(position);
 
-        ReactionsConfig config = new ReactionsConfigBuilder(context)
-                .withReactions(new int[]{
-                        R.drawable.ic_fb_like,
-                        R.drawable.ic_fb_love,
-                        R.drawable.ic_fb_laugh,
-                        R.drawable.ic_fb_wow,
-                        R.drawable.ic_fb_sad,
-                        R.drawable.ic_fb_angry
-                })
-                .build();
-
-        ReactionPopup popup = new ReactionPopup(context, config, (pos) -> {
-            return true; // true is closing popup, false is requesting a new selection
-        });
+//        ReactionsConfig config = new ReactionsConfigBuilder(context)
+//                .withReactions(new int[]{
+//                        R.drawable.ic_fb_like,
+//                        R.drawable.ic_fb_love,
+//                        R.drawable.ic_fb_laugh,
+//                        R.drawable.ic_fb_wow,
+//                        R.drawable.ic_fb_sad,
+//                        R.drawable.ic_fb_angry
+//                })
+//                .build();
+//
+//        ReactionPopup popup = new ReactionPopup(context, config, (pos) -> {
+//            return true; // true is closing popup, false is requesting a new selection
+//        });
 
         if (holder.getClass() == SenderViewHolder.class) {
             SenderViewHolder viewHolder = (SenderViewHolder) holder;
 
-//            if (modal.getMessage().equals("photo")){
-//
-//                viewHolder.sendImgs.setVisibility(View.VISIBLE);
-//                viewHolder.sendermsg.setVisibility(View.GONE);
-//                Picasso.get().load(modal.getImgurl()).placeholder(R.drawable.placeholder_image)
-//                        .into(((SenderViewHolder) holder).sendImgs);
-//            }
+            if (modal.getMessage().equals("photo")){
+
+                viewHolder.sendImgs.setVisibility(View.VISIBLE);
+                viewHolder.sendermsg.setVisibility(View.GONE);
+                Picasso.get().load(modal.getImgurl()).placeholder(R.drawable.placeholder_image)
+                        .into(viewHolder.sendImgs);
+            }
 
             viewHolder.sendermsg.setText(modal.getMessage());
             viewHolder.sendertime.setText(String.valueOf(modal.getMsgtime()));
 
-            viewHolder.sendermsg.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    popup.onTouch(v, event);
-                    return false;
-                }
-            });
+//            viewHolder.sendermsg.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    popup.onTouch(v, event);
+//                    return false;
+//                }
+//            });
 
         } else {
             ReciverViewHolder viewHolder = (ReciverViewHolder) holder;
 
-//            if (modal.getMessage().equals("photo")){
-//
-//                viewHolder.sendImgr.setVisibility(View.VISIBLE);
-//                viewHolder.recivermsg.setVisibility(View.GONE);
-//                Picasso.get().load(modal.getImgurl()).placeholder(R.drawable.placeholder_image)
-//                        .into(((ReciverViewHolder) holder).sendImgr);
-//            }
+            if (modal.getMessage().equals("photo")){
+
+                viewHolder.sendImgr.setVisibility(View.VISIBLE);
+                viewHolder.recivermsg.setVisibility(View.GONE);
+                Picasso.get().load(modal.getImgurl()).placeholder(R.drawable.placeholder_image)
+                        .into(viewHolder.sendImgr);
+            }
 
             viewHolder.recivermsg.setText(modal.getMessage());
             viewHolder.recivertime.setText(String.valueOf(modal.getMsgtime()));
-
-            viewHolder.recivermsg.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View v, MotionEvent event) {
-                    popup.onTouch(v, event);
-                    return false;
-                }
-            });
+//            viewHolder.recivermsg.setOnTouchListener(new View.OnTouchListener() {
+//                @Override
+//                public boolean onTouch(View v, MotionEvent event) {
+//                    popup.onTouch(v, event);
+//                    return false;
+//                }
+//            });
         }
 
     }

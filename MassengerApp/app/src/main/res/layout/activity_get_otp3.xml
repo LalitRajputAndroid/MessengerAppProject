@@ -98,16 +98,4 @@
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
-
-    <TextView
-        android:id="@+id/loginwithgmail_text_id"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/linearL_id"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
-        android:text="or login with Gmail"
-        android:textColor="@color/white"
-        android:textSize="17sp" />
-
 </RelativeLayout>
